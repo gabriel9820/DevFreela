@@ -24,13 +24,21 @@ namespace DevFreela.Application.Commands.CreateProject
                 request.FreelancerId,
                 request.TotalCost);
 
-            await _unitOfWork.BeginTransactionAsync();
+            try
+            {
+                await _unitOfWork.BeginTransactionAsync();
 
-            var projectId = await _projectRepository.CreateAsync(project);
+                var projectId = await _projectRepository.CreateAsync(project);
 
-            await _unitOfWork.CommitTransactionAsync();
+                await _unitOfWork.CommitAsync();
 
-            return projectId;
+                return projectId;
+            }
+            catch (Exception)
+            {
+                await _unitOfWork.RollbackAsync();
+                throw;
+            }
         }
     }
 }

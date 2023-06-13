@@ -18,18 +18,21 @@ namespace DevFreela.Infrastructure.Persistence.Repositories
             _transaction = await _dbContext.Database.BeginTransactionAsync();
         }
 
-        public async Task CommitTransactionAsync()
+        public async Task CommitAsync()
         {
-            try
-            {
-                await _transaction.CommitAsync();
-            }
-            catch (Exception ex)
-            {
-                await _transaction.RollbackAsync();
+            //await _dbContext.SaveChangesAsync();
+            await _transaction.CommitAsync();
 
-                throw ex;
-            }
+        }
+
+        public async Task RollbackAsync()
+        {
+            await _transaction.RollbackAsync();
+        }
+
+        public async Task SaveChangesAsync()
+        {
+            await _dbContext.SaveChangesAsync();
         }
     }
 }

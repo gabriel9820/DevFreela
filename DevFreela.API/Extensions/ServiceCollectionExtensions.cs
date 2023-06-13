@@ -2,6 +2,7 @@
 using DevFreela.Application.Consumers;
 using DevFreela.Application.Validators;
 using DevFreela.Core.Repositories;
+using DevFreela.Core.Services;
 using DevFreela.Infrastructure.Auth;
 using DevFreela.Infrastructure.MessageBus;
 using DevFreela.Infrastructure.Persistence;

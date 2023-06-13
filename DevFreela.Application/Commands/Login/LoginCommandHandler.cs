@@ -1,5 +1,5 @@
 ﻿using DevFreela.Core.Repositories;
-using DevFreela.Infrastructure.Auth;
+using DevFreela.Core.Services;
 using MediatR;
 
 namespace DevFreela.Application.Commands.Login

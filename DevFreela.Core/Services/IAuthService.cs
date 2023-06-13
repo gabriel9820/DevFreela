@@ -1,4 +1,4 @@
-﻿namespace DevFreela.Infrastructure.Auth
+﻿namespace DevFreela.Core.Services
 {
     public interface IAuthService
     {
